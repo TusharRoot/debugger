@@ -48,7 +48,7 @@ func Warning(s string) {
 	_, err = file.WriteString(data + "\n")
 	e(err)
 }
-func Error(s string) {
+func Error(e string) {
 	homeDir, _ := os.UserHomeDir()
 	time := time.Now()
 	var file, err = os.OpenFile(homeDir+"/.Tsunagu/Debugger.log", os.O_APPEND|os.O_WRONLY, fs.ModeAppend)
