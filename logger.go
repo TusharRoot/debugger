@@ -26,7 +26,7 @@ func ReadFile() {
 	}
 	fmt.Println(string(data))
 }
-func messages(s string) {
+func Messages(s string) {
 	homeDir, _ := os.UserHomeDir()
 	time := time.Now()
 	var file, err = os.OpenFile(homeDir+"/.Tsunagu/Debugger.log", os.O_APPEND|os.O_WRONLY, fs.ModeAppend)
@@ -37,7 +37,7 @@ func messages(s string) {
 	_, err = file.WriteString(data + "\n")
 	e(err)
 }
-func warning(s string) {
+func Warning(s string) {
 	homeDir, _ := os.UserHomeDir()
 	time := time.Now()
 	var file, err = os.OpenFile(homeDir+"/.Tsunagu/Debugger.log", os.O_APPEND|os.O_WRONLY, fs.ModeAppend)
