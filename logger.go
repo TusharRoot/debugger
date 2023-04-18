@@ -48,14 +48,14 @@ func Warning(s string) {
 	_, err = file.WriteString(data + "\n")
 	e(err)
 }
-func Error(e string) {
+func Error(s error) {
 	homeDir, _ := os.UserHomeDir()
 	time := time.Now()
 	var file, err = os.OpenFile(homeDir+"/.Tsunagu/Debugger.log", os.O_APPEND|os.O_WRONLY, fs.ModeAppend)
 	e(err)
 	defer file.Close()
 	date := fmt.Sprintf("[%s]", time.Format("2006-01-02 15:04:05"))
-	data := date + " ERROR: " + s
+	data := date + " ERROR: " + s.Error()
 	_, err = file.WriteString(data + "\n")
 	e(err)
 }
