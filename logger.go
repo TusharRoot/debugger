@@ -1,4 +1,4 @@
-package debugger
+package main
 
 import (
 	"fmt"
@@ -15,6 +15,16 @@ func CreateFol() string {
 	if err != nil {
 		fmt.Print()
 	}
+	filepath := "/home/vhtushar/.Tsunagu/Debugger.log"
+	_, err = os.Stat(filepath)
+	if err != nil {
+		f, err := os.Create(filepath)
+		if err != nil {
+			fmt.Println(err)
+		}
+		defer f.Close()
+	}
+
 	return homeDir
 }
 func ReadFile() {
@@ -49,7 +59,7 @@ func Warning(s string) {
 	e(err)
 }
 func Error(s error) {
-	homeDir, _ := os.UserHomeDir()
+	homeDir := CreateFol()
 	time := time.Now()
 	var file, err = os.OpenFile(homeDir+"/.Tsunagu/Debugger.log", os.O_APPEND|os.O_WRONLY, fs.ModeAppend)
 	e(err)
